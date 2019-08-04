@@ -2,6 +2,7 @@ spring:
   application:
     name: order-service
     
+<<<<<<< HEAD
 # server:
 #  port: 8201
   
@@ -35,3 +36,42 @@ spring:
 server:
   port: 8202
   
+=======
+  rabbitmq:
+    host: 192.168.19.131
+    port: 5672
+    username: admin
+    password: admin    
+    
+server:
+  port: 8201
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:2001/eureka, http://eureka2:2002/eureka
+      
+feign:
+  hystrix:
+    enabled: true
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+        
+---
+spring:
+  profiles: order1
+  
+server:
+  port: 8201
+  
+---
+spring:
+  profiles: order2
+  
+server:
+  port: 8202
+>>>>>>> branch 'master' of https://github.com/code-cang/sp-config
